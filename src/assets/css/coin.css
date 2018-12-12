@@ -1,0 +1,343 @@
+/* common */
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt17 {
+    margin-top: 17px;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.mt40 {
+    margin-top: 40px;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+#container {
+    padding: 74px 0 0 0;
+    margin-bottom: 50px; /*跟footer 高度一致 防止footer遮挡内容*/
+}
+
+.content {
+    padding: 25px 15px 0 15px;
+}
+
+a {
+    color: #2756dc;
+}
+
+/* header */
+#header {
+    position: fixed;
+    /*固定定位*/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 74px;
+    z-index: 10;
+    background: #2756dc url(../images/bg_tittle_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display:flex;/*Flex布局*/
+    display: -webkit-flex; /* Safari */
+    align-items:flex-end;/*指定垂直靠下*/
+}
+
+#header .navbar{
+    height: 44px;
+    line-height: 44px;
+}
+
+#header .navbar ul {
+    list-style-type: none;
+}
+
+#header .navbar ul li {
+    float: left;
+    color: #fff;
+}
+
+#header .navbar ul li span img {
+  height: 21px;
+  width: 21px;
+  vertical-align: middle;
+}
+
+#header .navbar ul li:first-child {
+    text-align: center;
+    width: 57px;
+}
+
+#header .navbar ul li span {
+    display: block;
+    font-size: 17px;
+}
+
+#header .navbar ul li span.active {
+    border-bottom:2px #fff solid;
+    width: 34px;
+}
+
+#header .navbar ul li a {
+    color: #fff;
+    opacity: 0.6;
+}
+
+#header .navbar .ivu-icon {
+    font-size: 20px;
+    line-height: 44px;
+}
+
+/** big header **/
+#big-main {
+    background-color: #f2f5fb;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#big-header {
+    position: absolute;
+    /*固定定位*/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 205.5px;
+    background: url(../images/bg_tittle_big_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+    align-items: flex-start;
+}
+
+#big-header .title {
+    margin-top: 20px;
+    height: 44px;
+    width: 100%;
+    line-height: 44px;
+    color: #fff;
+    font-size: 17px;
+    padding-left: 57px;
+}
+
+.big-content {
+    position: absolute;
+    top: 74px;
+    width: 100%;
+}
+
+/* footer */
+ #footer {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-top: #b3bfd0 1px solid;
+    height: 50px;
+    background-color: #fff;
+    padding-top: 8px;
+    font-size: 11px;
+    text-align: center;
+}
+
+#footer a {
+    color: #a7abb1;
+}
+
+.tab-home {
+    width: 50px;
+    margin: 0 auto;
+}
+
+.tab-home.active {
+    color:#2756dc;
+}
+
+.tab-home:hover {
+    color:#2756dc;
+}
+
+.tab-home .tab-home-icon {
+    height: 22px;
+    width: 22px;
+    background: url(../images/ic_bar_lending_grey_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    margin-bottom: 3px;
+}
+
+.tab-home:hover .tab-home-icon {
+    background: url(../images/ic_bar_lending_blue_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+}
+
+.tab-home .tab-home-icon.active {
+    background: url(../images/ic_bar_lending_blue_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+}
+
+.tab-wo {
+    width: 50px;
+    margin: 0 auto;
+}
+
+.tab-wo.active {
+    color:#2756dc;
+}
+
+.tab-wo:hover {
+    color:#2756dc;
+}
+
+.tab-wo .tab-wo-icon {
+    height: 22px;
+    width: 22px;
+    background: url(../images/ic_my_grey_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    margin-bottom: 3px;
+}
+
+.tab-wo:hover .tab-wo-icon {
+    background: url(../images/ic_my_blue_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+}
+
+.tab-wo .tab-wo-icon.active {
+    background: url(../images/ic_my_blue_@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+}
+
+/** form **/
+.form {
+    margin: 10px 42px;
+}
+
+.form li {
+    position:relative;
+    height: 65px;
+    margin-bottom: 6px;
+    background-origin: content-box;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 14px;
+}
+
+.form li label{
+    position:absolute;
+    top:0px;
+    color:#b3bfd0;
+    height:30px;
+    line-height:30px;
+}
+
+.form li input {
+    -web-kit-appearance:none;
+    -moz-appearance: none;
+    outline:0;
+    width: 100%;
+    height: 100%;
+    padding-right: 10px;
+    background-color: #fff;
+    vertical-align:text-bottom;
+    display:inline-block;
+    padding-top: 25px;
+}
+
+.form li .memo{
+    position:absolute;
+    top:25px;
+    right:10px;
+    color:#b3bfd0;
+    height:22px;
+    line-height:22px;
+}
+
+.danger-text {
+    color: red;
+    background: url("../images/ic_signup_error_@2x.png") no-repeat right top;
+    background-size: 100% 100%;
+    height:15px;
+    width: 15px;
+    float: left;
+    margin-top: 5px;
+  }
+
+.inputSty {
+    border-bottom: 1px #b3bfd0 solid;
+}
+
+.is-danger {
+    border-bottom: 1px red solid;
+  }
+
+  .verify-code{
+    float: right;
+    height:22px;
+    line-height:22px;
+    margin-left:5px;
+  }
+/*弹窗样式修改*/
+.mint-msgbox{
+
+}
+.mint-msgbox-header{
+  padding: 22px 24px 0;
+}
+.mint-msgbox-title{
+  text-align: left;
+}
+.mint-msgbox-content{
+  padding: 20px 24px;
+  border-bottom: none;
+}
+.mint-msgbox-message{
+  text-align: left;
+  font-size: 16px;
+  line-height:26px;
+}
+.mint-msgbox-btns{
+  height: 44px; overflow: hidden;
+  position: relative;
+}
+.mint-msgbox-btn{
+  flex: none;
+  display: block;
+  width: 74px;
+  height: 36px;
+  font-size: 14px;
+  }
+.mint-msgbox-cancel{
+  color: #2756dc;
+  position: absolute;
+  right:84px;
+  top: 0;
+  border-right: none;
+}
+.mint-msgbox-confirm{
+  color: #2756dc;
+  position: absolute;
+  right:8px;
+  top: 0;
+}
+.mint-msgbox-cancel:active{
+  color: #2756dc;
+}
