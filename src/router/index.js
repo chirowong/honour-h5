@@ -7,11 +7,7 @@ import {TYPE_ANDROID, TYPE_IOS} from '../api/const'
 // import FilterChain from '../assets/js/filterChain'
 
 import Home from '@/components/Home'
-import Login from '@/components/Login'
-import {ResetPassword} from '@/components/ResetPassword'
-import {Register, RegisterProtocol} from '@/components/Register'
-import {My, Setting, ChangePassword, AboutUs} from '@/components/My'
-
+import Query from '@/components/Query'
 Vue.use(Router)
 
 const router = new Router({
@@ -23,53 +19,9 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/resetPwd',
-      name: 'ResetPassword',
-      component: ResetPassword
-    },
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register,
-      meta: {
-        keepAlive: true
-      }
-    },
-    {
-      path: '/registerProtocol',
-      name: 'RegisterProtocol',
-      component: RegisterProtocol
-    },
-    {
-      path: '/my',
-      name: 'My',
-      component: My
-    },
-    {
-      path: '/about/us',
-      name: 'AboutUs',
-      component: AboutUs
-    },
-    {
-      path: '/setting',
-      name: 'Setting',
-      component: Setting,
-      meta: {
-        requireAuth: true
-      }
-    },
-    {
-      path: '/changePassword',
-      name: 'ChangePassword',
-      component: ChangePassword,
-      meta: {
-        requireAuth: true
-      }
+      path: '/query',
+      name: 'Query',
+      component: Query
     }
   ]
 })

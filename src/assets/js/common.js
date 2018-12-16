@@ -178,7 +178,7 @@ export function goBack () {
     }
     default: {
       if (window.history.length <= 1) {
-        router.push('/borrow')
+        router.push('/')
       } else {
         router.go(-1)
       }
