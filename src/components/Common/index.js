@@ -1,3 +1,4 @@
 import Header from './Header.vue'
+import SearchHeader from './SearchHeader.vue'
 
-export default Header
+export {Header, SearchHeader}

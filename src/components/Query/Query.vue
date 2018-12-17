@@ -1,99 +1,43 @@
 <template>
   <Header title="查询">
-    <el-row class="query-box-card normal-paid">
+    <el-row class="query-box-card pain-point" @click.native='goPainPoint'>
       <el-col :span="12">
         <div class="grid-content query-box-title">产品常规痛点查询</div>
       </el-col>
       <el-col :span="12">
-        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
+        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right"></i></div>
       </el-col>
     </el-row>
-    <el-row class="query-box-card value-discovery">
+    <el-row class="query-box-card value-discovery" @click.native='goHighValue'>
       <el-col :span="12">
         <div class="grid-content query-box-title">产品高价值点发现</div>
       </el-col>
       <el-col :span="12">
-        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
+        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right"></i></div>
       </el-col>
     </el-row>
-    <el-row class="query-box-card custom-value">
+    <el-row class="query-box-card custom-value" @click.native='goSearch'>
       <el-col :span="12">
-        <div class="grid-content query-box-title">自定义价值点查询 </div>
+        <div class="grid-content query-box-title">自定义价值点查询</div>
       </el-col>
       <el-col :span="12">
-        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
+        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right"></i></div>
       </el-col>
     </el-row>
   </Header>
 </template>
 
 <script>
-import {queryCurrentCoinPrice} from '../../api/currentCoinPrice'
-import {queryIndexLoanInfo} from '../../api/home'
-
 export default {
-  data () {
-    return {
-      usd_price: 0,
-      trend: 0,
-      updated_time: '',
-      up_or_down: 0,
-      maxAmount: 0,
-      minAmount: 0,
-      period: 0,
-      periodType: '',
-      maxDisbursement: 0,
-      minDisbursement: 0,
-      minPledge: 0,
-      maxPledge: 0,
-      trend_plus_minus: 0
-    }
-  },
-  created: function () {
-    let me = this
-    me.queryCurrentCoinPrice()
-    me.queryIndexLoanInfo()
-  },
   methods: {
-    queryCurrentCoinPrice () {
-      let me = this
-      queryCurrentCoinPrice(function (currentCoinPrice) {
-        me.usd_price = currentCoinPrice.usdPrice
-        me.trend = (currentCoinPrice.trend * 100).toFixed(2)
-
-        let date = currentCoinPrice.priceUpdatedTime
-        me.updated_time = date.substr(0, 5)
-
-        if (currentCoinPrice.trend < 0) {
-          me.up_or_down = -1
-          me.trend_plus_minus = -1
-        } else if (currentCoinPrice.trend > 0) {
-          me.up_or_down = 1
-          me.trend_plus_minus = 1
-        }
-      })
+    goPainPoint () {
+      this.$router.push({path: '/painPoint'})
     },
-    queryIndexLoanInfo () {
-      let me = this
-      queryIndexLoanInfo(function (indexLoanInfo) {
-        me.maxAmount = indexLoanInfo.maxAmount / 1000000
-        me.minAmount = indexLoanInfo.minAmount / 1000000
-        me.period = indexLoanInfo.period
-        let periodType = indexLoanInfo.periodType
-        if (periodType === 10) {
-          me.periodType = '天'
-        } else if (periodType === 20) {
-          me.periodType = '月'
-        } else if (periodType === 30) {
-          me.periodType = '年'
-        } else {
-          me.periodType = ''
-        }
-        me.maxDisbursement = indexLoanInfo.maxDisbursement / 100
-        me.minDisbursement = indexLoanInfo.minDisbursement / 100
-        me.minPledge = indexLoanInfo.minPledge.toFixed(2)
-        me.maxPledge = indexLoanInfo.maxPledge.toFixed(2)
-      })
+    goHighValue () {
+      this.$router.push({path: '/highValue'})
+    },
+    goSearch () {
+      this.$router.push({path: '/search'})
     }
   }
 }
@@ -106,8 +50,8 @@ export default {
     border-radius: 10px;
   }
 
-  .normal-paid {
-    background: url(../../assets/images/normal_paid@2x.png) no-repeat right top;
+  .pain-point {
+    background: url(../../assets/images/pain_point@2x.png) no-repeat right top;
     background-size: 100% 100%;
   }
 

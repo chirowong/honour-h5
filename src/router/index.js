@@ -8,6 +8,9 @@ import {TYPE_ANDROID, TYPE_IOS} from '../api/const'
 
 import Home from '@/components/Home'
 import Query from '@/components/Query'
+import PainPoint from '@/components/PainPoint'
+import HighValue from '@/components/HighValue'
+import Search from '@/components/Search'
 Vue.use(Router)
 
 const router = new Router({
@@ -22,6 +25,21 @@ const router = new Router({
       path: '/query',
       name: 'Query',
       component: Query
+    },
+    {
+      path: '/painPoint',
+      name: 'PainPoint',
+      component: PainPoint
+    },
+    {
+      path: '/highValue',
+      name: 'HighValue',
+      component: HighValue
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
     }
   ]
 })
