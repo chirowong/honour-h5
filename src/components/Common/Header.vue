@@ -34,3 +34,24 @@ export default {
   }
 }
 </script>
+
+<style>
+  .el-header {
+    background-color: #4EB0D7;
+    color: #fff;
+    text-align: center;
+    line-height: 44pt;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .el-main {
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+  }
+
+  body > .el-container {
+    margin-bottom: 10px;
+  }
+</style>

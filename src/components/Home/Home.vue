@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import {goBack} from '../../assets/js/common'
-
 export default {
   data () {
     return {
@@ -35,9 +33,6 @@ export default {
     }
   },
   methods: {
-    goBack () {
-      goBack()
-    },
     goQuery () {
       this.$router.push({path: '/query'})
     }
@@ -46,25 +41,6 @@ export default {
 </script>
 
 <style>
-  .el-header {
-    background-color: #4EB0D7;
-    color: #fff;
-    text-align: center;
-    line-height: 44pt;
-    font-size: 17px;
-    font-weight: bold;
-  }
-
-  .el-main {
-    background-color: #ffffff;
-    color: #333;
-    text-align: center;
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-
   .box-card {
     height: 130px;
     background-color: #f4f4f8;

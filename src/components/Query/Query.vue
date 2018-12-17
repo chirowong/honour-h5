@@ -1,13 +1,27 @@
 <template>
   <Header title="查询">
-    <el-row class="box-card" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
+    <el-row class="query-box-card normal-paid">
       <el-col :span="12">
-        <div class="grid-content chinese-name">燃气热水器</div>
-        <div class="grid-content eng-name">Water heater</div>
-        <div class="grid-content grid-query"><el-button size="mini" class="query-btn">查询</el-button></div>
+        <div class="grid-content query-box-title">产品常规痛点查询</div>
       </el-col>
       <el-col :span="12">
-        <img src="../../assets/logo.png" class="image">
+        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
+      </el-col>
+    </el-row>
+    <el-row class="query-box-card value-discovery">
+      <el-col :span="12">
+        <div class="grid-content query-box-title">产品高价值点发现</div>
+      </el-col>
+      <el-col :span="12">
+        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
+      </el-col>
+    </el-row>
+    <el-row class="query-box-card custom-value">
+      <el-col :span="12">
+        <div class="grid-content query-box-title">自定义价值点查询 </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
       </el-col>
     </el-row>
   </Header>
@@ -16,7 +30,6 @@
 <script>
 import {queryCurrentCoinPrice} from '../../api/currentCoinPrice'
 import {queryIndexLoanInfo} from '../../api/home'
-import {goBack} from '../../assets/js/common'
 
 export default {
   data () {
@@ -42,9 +55,6 @@ export default {
     me.queryIndexLoanInfo()
   },
   methods: {
-    goBack () {
-      goBack()
-    },
     queryCurrentCoinPrice () {
       let me = this
       queryCurrentCoinPrice(function (currentCoinPrice) {
@@ -90,66 +100,44 @@ export default {
 </script>
 
 <style>
-  .el-header {
-    background-color: #4EB0D7;
-    color: #fff;
-    text-align: center;
-    line-height: 44pt;
-    font-size: 17px;
-    font-weight: bold;
-  }
-
-  .title {
-    text-align: center;
-  }
-
-  .el-main {
-    background-color: #ffffff;
-    color: #333;
-    text-align: center;
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-
-  .box-card {
-    height: 130px;
-    background-color: #f4f4f8;
+  .query-box-card {
+    height: 110px;
     margin-bottom: 20px;
     border-radius: 10px;
   }
 
-  .box-card .image {
-    width: 130px;
-    height: 130px;
+  .normal-paid {
+    background: url(../../assets/images/normal_paid@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+  }
+
+  .value-discovery {
+    background: url(../../assets/images/value_discovery@2x.png) no-repeat right top;
+    background-size: 100% 100%;
+  }
+
+  .custom-value {
+    background: url(../../assets/images/custom_value@2x.png) no-repeat right top;
+    background-size: 100% 100%;
   }
 
   .grid-content {
     min-height: 25px;
   }
 
-  .box-card .chinese-name {
-    margin-top: 30px;
+  .query-box-card .query-box-title {
+    margin-top: 45px;
     font-size: 17px;
-    font-weight: bold;
-    text-align: left;
-    padding-left: 24px;
-  }
-
-  .box-card .eng-name {
-    font-size: 10px;
-    text-align: left;
-    padding-left: 24px;
-  }
-
-  .box-card .grid-query {
-    text-align: left;
-    padding-left: 24px;
-  }
-
-  .box-card .query-btn {
-    background-color: #4EB0D7;
     color: #fff;
+    text-align: left;
+    padding-left: 24px;
+  }
+
+  .query-box-card .query-box-icon {
+    margin-top: 45px;
+    font-size: 18px;
+    color: #fff;
+    text-align: right;
+    padding-right: 24px
   }
 </style>
