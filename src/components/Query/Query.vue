@@ -1,25 +1,16 @@
 <template>
-  <el-container>
-    <el-header>
-      <el-row>
-        <el-col :span="1"><i class="el-icon-arrow-left" @click='goBack'></i></el-col>
-        <el-col :span="22" class="title">查询</el-col>
-        <el-col :span="1"></el-col>
-      </el-row>
-    </el-header>
-    <el-main>
-      <el-row class="box-card" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
-          <el-col :span="12">
-            <div class="grid-content chinese-name">燃气热水器</div>
-            <div class="grid-content eng-name">Water heater</div>
-            <div class="grid-content grid-query"><el-button size="mini" class="query-btn">查询</el-button></div>
-          </el-col>
-          <el-col :span="12">
-            <img src="../../assets/logo.png" class="image">
-           </el-col>
-      </el-row>
-    </el-main>
-  </el-container>
+  <Header title="查询">
+    <el-row class="box-card" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
+      <el-col :span="12">
+        <div class="grid-content chinese-name">燃气热水器</div>
+        <div class="grid-content eng-name">Water heater</div>
+        <div class="grid-content grid-query"><el-button size="mini" class="query-btn">查询</el-button></div>
+      </el-col>
+      <el-col :span="12">
+        <img src="../../assets/logo.png" class="image">
+      </el-col>
+    </el-row>
+  </Header>
 </template>
 
 <script>

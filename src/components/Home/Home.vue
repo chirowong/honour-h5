@@ -1,7 +1,5 @@
 <template>
-  <el-container>
-    <el-header>首页</el-header>
-    <el-main>
+  <Header title="首页" has-back="false">
       <el-row class="box-card" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
           <el-col :span="12">
             <div class="grid-content chinese-name">燃气热水器</div>
@@ -12,8 +10,7 @@
             <img src="../../assets/logo.png" class="image">
            </el-col>
       </el-row>
-    </el-main>
-  </el-container>
+  </Header>
 </template>
 
 <script>
