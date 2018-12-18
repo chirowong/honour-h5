@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import {queryCurrentCoinPrice} from '../../api/currentCoinPrice'
-
 export default {
   data () {
     return {
@@ -42,51 +40,8 @@ export default {
     }
   },
   created: function () {
-    let me = this
-    me.queryCurrentCoinPrice()
-    me.queryIndexLoanInfo()
   },
   methods: {
-    queryCurrentCoinPrice () {
-      let me = this
-      queryCurrentCoinPrice(function (currentCoinPrice) {
-        me.usd_price = currentCoinPrice.usdPrice
-        me.trend = (currentCoinPrice.trend * 100).toFixed(2)
-
-        let date = currentCoinPrice.priceUpdatedTime
-        me.updated_time = date.substr(0, 5)
-
-        if (currentCoinPrice.trend < 0) {
-          me.up_or_down = -1
-          me.trend_plus_minus = -1
-        } else if (currentCoinPrice.trend > 0) {
-          me.up_or_down = 1
-          me.trend_plus_minus = 1
-        }
-      })
-    },
-    queryIndexLoanInfo () {
-      let me = this
-      queryIndexLoanInfo(function (indexLoanInfo) {
-        me.maxAmount = indexLoanInfo.maxAmount / 1000000
-        me.minAmount = indexLoanInfo.minAmount / 1000000
-        me.period = indexLoanInfo.period
-        let periodType = indexLoanInfo.periodType
-        if (periodType === 10) {
-          me.periodType = '天'
-        } else if (periodType === 20) {
-          me.periodType = '月'
-        } else if (periodType === 30) {
-          me.periodType = '年'
-        } else {
-          me.periodType = ''
-        }
-        me.maxDisbursement = indexLoanInfo.maxDisbursement / 100
-        me.minDisbursement = indexLoanInfo.minDisbursement / 100
-        me.minPledge = indexLoanInfo.minPledge.toFixed(2)
-        me.maxPledge = indexLoanInfo.maxPledge.toFixed(2)
-      })
-    }
   }
 }
 </script>
