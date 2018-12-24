@@ -1,16 +1,27 @@
 <template>
   <el-card class="content-card" bodyStyle="padding: 10px 20px; text-align: left">
     <el-row>
-      <el-col :span="24" class="content-card-title">
+      <el-col :span="12" class="content-card-title">
         {{title}}
+      </el-col>
+      <el-col :span="12" class="content-card-point">
+        <template v-if="point">评分:{{point}}</template>
+      </el-col>
+    </el-row>
+    <el-row v-if="totalComment">
+      <el-col :span="24" class="content-card-total-comment">
+        共发布{{totalComment}}条评论
       </el-col>
     </el-row>
     <el-row>
       <el-col :span="7" class="content-card-period">
         {{period}}
       </el-col>
-      <el-col :span="17" class="content-card-period">
+      <el-col :span="12" class="content-card-period">
         评论日期：{{commentDate}}
+      </el-col>
+      <el-col :span="5" class="content-card-trend">
+        <el-tag class="show-trend-tag" v-if="isShowTrend">查看趋势</el-tag>
       </el-col>
     </el-row>
     <el-row>
@@ -34,6 +45,9 @@ export default {
   name: 'ContentCard',
   props: {
     title: String,
+    point: String,
+    totalComment: String,
+    isShowTrend: Boolean,
     period: String,
     commentDate: String,
     resource: String,
@@ -45,7 +59,7 @@ export default {
 
 <style>
   .content-card {
-    margin: 15px 20px;
+    margin: 15px 0;
   }
 
   .content-card-title{
@@ -54,10 +68,41 @@ export default {
     margin-top: 15px;
   }
 
+  .content-card-point{
+    color: #4EB0D7;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: right;
+  }
+
+  .content-card-total-comment {
+    color: #666666;
+    font-size: 11px;
+    margin-top: 7px;
+    text-align: right;
+  }
+
   .content-card-period{
     color: #666666;
     font-size: 12px;
     margin-top: 27px;
+  }
+
+  .content-card-trend{
+    color: #666666;
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: right;
+  }
+
+  .show-trend-tag {
+    font-size: 13px;
+    color: #fff;
+    border-radius: 3px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #4EB0D7;
   }
 
   .content-card-resource{
