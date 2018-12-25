@@ -21,7 +21,7 @@
         评论日期：{{commentDate}}
       </el-col>
       <el-col :span="5" class="content-card-trend">
-        <el-tag class="show-trend-tag" v-if="isShowTrend">查看趋势</el-tag>
+        <el-button class="show-trend-button" v-if="isShowTrend" @click='goTrend' size="mini">查看趋势</el-button>
       </el-col>
     </el-row>
     <el-row>
@@ -48,11 +48,19 @@ export default {
     point: String,
     totalComment: String,
     isShowTrend: Boolean,
+    trend: String,
+    trendId: String,
     period: String,
     commentDate: String,
     resource: String,
     content: String,
     link: String
+  },
+  methods: {
+    goTrend () {
+      this.$router.push({path: '/trend'})
+      console.log('dsfsdf' + this.trend)
+    }
   }
 }
 </script>
@@ -96,12 +104,17 @@ export default {
     text-align: right;
   }
 
-  .show-trend-tag {
-    font-size: 13px;
+  .show-trend-button {
     color: #fff;
-    border-radius: 3px;
-    height: 24px;
-    line-height: 24px;
+    border-radius: 5px;
+    background-color: #4EB0D7;
+    border-color: #4EB0D7;
+    padding: 5px 10px;
+  }
+
+  .show-trend-button:focus, .show-trend-button:hover {
+    color: #fff;
+    border-color: #4EB0D7;
     background-color: #4EB0D7;
   }
 

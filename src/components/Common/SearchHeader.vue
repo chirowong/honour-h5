@@ -16,25 +16,6 @@
         <el-col :span="3" class="title">{{title}}</el-col>
       </el-row>
     </el-header>
-    <el-main class="search-main">
-      <el-row class="hot-search">
-        <el-col :span="24">
-          <el-row>
-            <el-col :span="24">
-              <div class="grid-content hot-search-title">热门搜索</div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
-              <div class="grid-content query-box-tag-list">
-                <el-tag class="query-box-tag">标签一</el-tag>
-                <el-tag class="query-box-tag-select">标签二</el-tag>
-              </div>
-            </el-col>
-          </el-row>
-        </el-col>
-      </el-row>
-    </el-main>
     <el-main>
       <slot></slot>
     </el-main>
@@ -77,9 +58,6 @@ export default {
     background-color: #ffffff;
     color: #333;
     text-align: center;
-  }
-
-  .search-main {
     padding: 0;
   }
 

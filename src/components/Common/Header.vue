@@ -25,7 +25,7 @@ export default {
     hasBack: Boolean
   },
   created: function () {
-    console.log(this.$route.query.statusBarHeight)
+    // console.log(this.$route.query.statusBarHeight)
   },
   methods: {
     goBack () {
@@ -49,6 +49,7 @@ export default {
     background-color: #ffffff;
     color: #333;
     text-align: center;
+    padding: 0;
   }
 
   body > .el-container {

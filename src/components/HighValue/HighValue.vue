@@ -1,5 +1,6 @@
 <template>
   <Header title="高价值">
+    <div class="hign-value-contain">
     <el-row>
       <el-col :span="24">
         <div class="grid-content query-box-title">产品常规痛点查询</div>
@@ -16,7 +17,7 @@
       period="周期Y18W04"
       point="0.812"
       totalComment="4"
-      isShowTrend=true
+      v-bind:isShowTrend=true
       commentDate="2018.05.06"
       resource="信息来源:https://item.jd.com/5115631.html"
       content="价格匹配质量这个价格与这个质量匹配，<span style='color:#EF8237'>用着还行。噪音比较大，因为用料不足，料薄，</span>因此热交换器（燃烧室）燃烧时共振声也就比较大。所"
@@ -28,12 +29,14 @@
       period="周期Y18W04"
       point="0.812"
       totalComment="4"
-      isShowTrend=true
+      v-bind:isShowTrend=true
+      trend="11"
       commentDate="2018.05.06"
       resource="信息来源:https://item.jd.com/5115631.html"
       content="价格匹配质量这个价格与这个质量匹配，<span style='color:#EF8237'>用着还行。噪音比较大，因为用料不足，料薄，</span>因此热交换器（燃烧室）燃烧时共振声也就比较大。所"
       link="全文"
     ></ContentCard>
+    </div>
   </Header>
 </template>
 
@@ -110,6 +113,10 @@ export default {
 </script>
 
 <style>
+  .hign-value-contain {
+    padding: 20px;
+  }
+
   .high-value-tag-contain {
     text-align: left;
   }

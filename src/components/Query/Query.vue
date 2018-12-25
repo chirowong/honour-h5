@@ -1,5 +1,6 @@
 <template>
   <Header title="查询">
+    <div class="query-contain">
     <el-row class="query-box-card pain-point" @click.native='goPainPoint'>
       <el-col :span="12">
         <div class="grid-content query-box-title">产品常规痛点查询</div>
@@ -24,6 +25,7 @@
         <div class="grid-content query-box-icon"><i class="el-icon-arrow-right"></i></div>
       </el-col>
     </el-row>
+    </div>
   </Header>
 </template>
 
@@ -44,6 +46,10 @@ export default {
 </script>
 
 <style>
+  .query-contain {
+    padding: 20px;
+  }
+
   .query-box-card {
     height: 110px;
     margin-bottom: 20px;

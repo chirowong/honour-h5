@@ -1,5 +1,6 @@
 <template>
   <Header title="首页" has-back="false">
+    <div class="home-contain">
       <el-row class="box-card" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
           <el-col :span="12">
             <div class="grid-content chinese-name">燃气热水器</div>
@@ -10,6 +11,7 @@
             <img src="../../assets/logo.png" class="image">
            </el-col>
       </el-row>
+    </div>
   </Header>
 </template>
 
@@ -41,6 +43,10 @@ export default {
 </script>
 
 <style>
+  .home-contain {
+    padding: 20px;
+  }
+
   .box-card {
     height: 130px;
     background-color: #f4f4f8;
