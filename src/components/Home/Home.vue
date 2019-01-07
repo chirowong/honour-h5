@@ -1,42 +1,49 @@
 <template>
-  <Header title="首页" has-back="false">
+  <Header title="首页" :hasBack="false">
     <div class="home-contain">
-      <el-row class="box-card" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
-          <el-col :span="12">
-            <div class="grid-content chinese-name">燃气热水器</div>
-            <div class="grid-content eng-name">Water heater</div>
-            <div class="grid-content grid-query"><el-button size="mini" class="query-btn" @click='goQuery'>查询</el-button></div>
-          </el-col>
-          <el-col :span="12">
-            <img src="../../assets/logo.png" class="image">
-           </el-col>
-      </el-row>
+      <template v-if="categorys && categorys.length > 0">
+        <el-row class="box-card" v-for="(category,index) in categorys" v-bind:key="category.id">
+            <el-col :span="12">
+              <div class="grid-content chinese-name">{{category.categoryName}}</div>
+              <div class="grid-content eng-name">{{category.englishName}}</div>
+              <div class="grid-content grid-query"><el-button size="mini" class="query-btn" @click='goQuery(category.id)'>查询</el-button></div>
+            </el-col>
+            <el-col :span="12">
+              <img :src="categoryIcons[index]" class="image"/>
+             </el-col>
+        </el-row>
+      </template>
     </div>
   </Header>
 </template>
 
 <script>
+import {queryCategorys} from '../../api/home'
+
 export default {
   data () {
     return {
-      usd_price: 0,
-      trend: 0,
-      updated_time: '',
-      up_or_down: 0,
-      maxAmount: 0,
-      minAmount: 0,
-      period: 0,
-      periodType: '',
-      maxDisbursement: 0,
-      minDisbursement: 0,
-      minPledge: 0,
-      maxPledge: 0,
-      trend_plus_minus: 0
+      categorys: null,
+      categoryIcons: []
     }
   },
+  created: function () {
+    let me = this
+    me.queryCategorys()
+  },
   methods: {
-    goQuery () {
-      this.$router.push({path: '/query'})
+    goQuery (id) {
+      this.$router.push({path: '/query', query: { id: id }})
+    },
+    queryCategorys () {
+      let me = this
+      queryCategorys(function (categorys) {
+        me.categorys = categorys
+        for (let i = 0; i < categorys.length; i++) {
+          me.categoryIcons.push(categorys[i].categoryIcon)
+        }
+        console.log(categorys)
+      })
     }
   }
 }

@@ -3,7 +3,7 @@
     <el-header>
       <el-row>
         <el-col :span="1">
-          <i class="el-icon-arrow-left" @click='goBack' v-if="!hasBack"></i>
+          <i class="el-icon-arrow-left" @click='goBack' v-if="hasBack"></i>
         </el-col>
         <el-col :span="22" class="title">{{title}}</el-col>
         <el-col :span="1"></el-col>
@@ -22,7 +22,10 @@ export default {
   name: 'Header',
   props: {
     title: String,
-    hasBack: Boolean
+    hasBack: {
+      type: Boolean,
+      default: true
+    }
   },
   created: function () {
     // console.log(this.$route.query.statusBarHeight)

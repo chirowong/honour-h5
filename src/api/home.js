@@ -1,8 +1,9 @@
 import mapi from './mapi'
 
 // 查询
-export function queryIndexLoanInfo (callback) {
-  var param = {command: '600101',
+export function queryCategorys (callback) {
+  var param = {method: 'get',
+    url: '/api/category/',
     success: function (responseDataWrapper, response) {
       if (callback) {
         callback(response)
