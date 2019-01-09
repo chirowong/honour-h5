@@ -31,15 +31,27 @@
 
 <script>
 export default {
+  data () {
+    return {
+      categoryId: null
+    }
+  },
+  created: function () {
+    let me = this
+    me.categoryId = this.$route.query.id
+  },
   methods: {
     goPainPoint () {
-      this.$router.push({path: '/painPoint'})
+      let me = this
+      this.$router.push({path: '/painPoint', query: { id: me.categoryId }})
     },
     goHighValue () {
-      this.$router.push({path: '/highValue'})
+      let me = this
+      this.$router.push({path: '/highValue', query: { id: me.categoryId }})
     },
     goSearch () {
-      this.$router.push({path: '/search'})
+      let me = this
+      this.$router.push({path: '/search', query: { id: me.categoryId }})
     }
   }
 }
