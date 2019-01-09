@@ -1,29 +1,37 @@
 <template>
   <Header title="常规痛点">
-    <el-row class="query-box-card normal-paid">
-      <el-col :span="12">
-        <div class="grid-content query-box-title">产品常规痛点查询</div>
-      </el-col>
-      <el-col :span="12">
-        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
-      </el-col>
-    </el-row>
-    <el-row class="query-box-card value-discovery">
-      <el-col :span="12">
-        <div class="grid-content query-box-title">产品高价值点发现</div>
-      </el-col>
-      <el-col :span="12">
-        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
-      </el-col>
-    </el-row>
-    <el-row class="query-box-card custom-value">
-      <el-col :span="12">
-        <div class="grid-content query-box-title">自定义价值点查询 </div>
-      </el-col>
-      <el-col :span="12">
-        <div class="grid-content query-box-icon"><i class="el-icon-arrow-right" @click='goBack'></i></div>
-      </el-col>
-    </el-row>
+    <dev class="box_but_list">
+      <div class="brand_but">品牌<span class="triangle-down"></span><div class="shu"></div></div>
+      <div class="cycle_but">周期</div>
+    </dev>
+    <div class="box_label_list">
+      <span>全部品牌</span>
+      <span>近四周</span>
+    </div>
+    <div class="content_list">
+      <div class="cont">
+        <div class="top">
+          <div class="name">声音异响</div>
+          <div class="num_but">共1000条 ></div>
+        </div>
+        <div class="bottom">
+          <div class="name">全部品牌</div>
+          <div class="ProgressBar"><div class="blue" style="width: 50%"></div></div>
+          <div class="Number">1000</div>
+        </div>
+      </div>
+      <div class="cont">
+        <div class="top">
+          <div class="name">声音异响</div>
+          <div class="num_but">共1000条 ></div>
+        </div>
+        <div class="bottom">
+          <div class="name">全部品牌</div>
+          <div class="ProgressBar"><div class="blue" style="width: 50%"></div></div>
+          <div class="Number">1000</div>
+        </div>
+      </div>
+    </div>
   </Header>
 </template>
 
@@ -54,44 +62,102 @@ export default {
 </script>
 
 <style>
-  .query-box-card {
-    height: 110px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+  /*下拉框样式*/
+  .box_but_list{
+    display: block;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px #f1f1f1 solid;
   }
-
-  .normal-paid {
-    background: url(../../assets/images/pain_point@2x.png) no-repeat right top;
-    background-size: 100% 100%;
+  .box_but_list .brand_but,.cycle_but{
+    position: relative;
+    text-align: center;
+    float: left;
+    width: 50%;
+    height: 48px;
+    color: #333;
   }
-
-  .value-discovery {
-    background: url(../../assets/images/value_discovery@2x.png) no-repeat right top;
-    background-size: 100% 100%;
+  .box_but_list .brand_but .shu{
+    width: 1px;
+    height: 25px;
+    background-color: #f1f1f1;
+    position: absolute;
+    right: 0;
+    top: 11px;
   }
-
-  .custom-value {
-    background: url(../../assets/images/custom_value@2x.png) no-repeat right top;
-    background-size: 100% 100%;
-  }
-
-  .grid-content {
-    min-height: 25px;
-  }
-
-  .query-box-card .query-box-title {
-    margin-top: 45px;
-    font-size: 17px;
-    color: #fff;
+  /*已经选择的标签样式*/
+  .box_label_list{
     text-align: left;
-    padding-left: 24px;
+    padding: 12px 25px 24px;
   }
-
-  .query-box-card .query-box-icon {
-    margin-top: 45px;
-    font-size: 18px;
-    color: #fff;
+  .box_label_list span{
+    display: inline-block;
+    padding: 5px 8px;
+    background-color: #efefef;
+    color: #999;
+    margin-right: 12px;
+    border-radius: 4px;
+  }
+  /*内容*/
+  .content_list{
+    text-align: left;
+    padding: 0 25px;
+    min-height: 300px;
+  }
+  .content_list .cont{
+    border-radius: 10px;
+    padding: 0 10px;
+    -moz-box-shadow:0px 1px 5px #e0e0e0;
+    -webkit-box-shadow:0px 1px 5px #e0e0e0; box-shadow:0px 1px 5px #e0e0e0;
+    margin-bottom: 22px;
+  }
+  .content_list .cont .top{
+    height: 54px;
+    line-height: 54px;
+    border-bottom: 1px #f1f1f1 solid;
+  }
+  .content_list .cont .top .name{
+    float: left;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  .content_list .cont .top .num_but{
+    float: right;
+    font-size: 14px;
+    color: #666;
+  }
+  .content_list .cont .bottom{
+    height: 40px;
+    line-height: 40px;
+  }
+  .content_list .cont .bottom .name{
+    float: left;
+    color: #999;
+    width: 22%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  .content_list .cont .bottom .ProgressBar{
+    float: left;
+    background-color: #efefef;
+    width: 64%;
+    height: 6px;
+    margin-top: 16px;
+  }
+  .content_list .cont .bottom .ProgressBar .blue{
+    height: 6px;
+    background-color: #44a7d1;
+  }
+  .content_list .cont .bottom .Number{
+    float: right;
     text-align: right;
-    padding-right: 24px
+    color: #999;
+    width: 14%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
   }
 </style>
