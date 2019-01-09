@@ -1,8 +1,8 @@
 <template>
   <Header title="首页" :hasBack="false">
     <div class="home-contain">
-      <template v-if="categorys && categorys.length > 0">
-        <el-row class="box-card" v-for="(category,index) in categorys" v-bind:key="category.id">
+      <template v-if="categories && categories.length > 0">
+        <el-row class="box-card" v-for="(category,index) in categories" v-bind:key="category.id">
             <el-col :span="12">
               <div class="grid-content chinese-name">{{category.categoryName}}</div>
               <div class="grid-content eng-name">{{category.englishName}}</div>
@@ -18,31 +18,32 @@
 </template>
 
 <script>
-import {queryCategorys} from '../../api/home'
+import {queryCategories} from '../../api/home'
+import baseUrl from '../../api/env'
 
 export default {
   data () {
     return {
-      categorys: null,
+      categories: null,
       categoryIcons: []
     }
   },
   created: function () {
     let me = this
-    me.queryCategorys()
+    me.queryCategories()
   },
   methods: {
     goQuery (id) {
       this.$router.push({path: '/query', query: { id: id }})
     },
-    queryCategorys () {
+    queryCategories () {
       let me = this
-      queryCategorys(function (categorys) {
-        me.categorys = categorys
-        for (let i = 0; i < categorys.length; i++) {
-          me.categoryIcons.push(categorys[i].categoryIcon)
+      queryCategories(function (categories) {
+        me.categories = categories
+        for (let i = 0; i < categories.length; i++) {
+          me.categoryIcons.push(baseUrl + categories[i].categoryIcon)
         }
-        console.log(categorys)
+        console.log(categories)
       })
     }
   }

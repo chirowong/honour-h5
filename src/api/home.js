@@ -1,7 +1,7 @@
 import mapi from './mapi'
 
 // 查询
-export function queryCategorys (callback) {
+export function queryCategories (callback) {
   var param = {method: 'get',
     url: '/api/category/',
     success: function (responseDataWrapper, response) {
