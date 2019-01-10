@@ -1,8 +1,8 @@
 <template>
   <Header title="常规痛点">
     <dev class="box_but_list">
-      <div class="brand_but">品牌<span class="triangle-down"></span><div class="shu"></div></div>
-      <div class="cycle_but">周期</div>
+      <div class="brand_but" @click="brandBut"><span class="triangle-down" :class="{'current':brandPopup}">品牌</span><div class="shu"></div></div>
+      <div class="cycle_but"><span class="triangle-down">周期</span></div>
     </dev>
     <div class="box_label_list">
       <span>全部品牌</span>
@@ -32,6 +32,10 @@
         </div>
       </div>
     </div>
+    <div class="mask" v-if="mask"></div>
+    <div class="brand_popup" v-if="brandPopup">
+      11
+    </div>
   </Header>
 </template>
 
@@ -51,12 +55,18 @@ export default {
       minDisbursement: 0,
       minPledge: 0,
       maxPledge: 0,
-      trend_plus_minus: 0
+      trend_plus_minus: 0,
+      brandPopup: false,
+      mask: false,
     }
   },
   created: function () {
   },
   methods: {
+    brandBut: function () {
+      this.brandPopup = !this.brandPopup
+      this.mask = !this.mask
+    }
   }
 }
 </script>
@@ -77,6 +87,22 @@ export default {
     width: 50%;
     height: 48px;
     color: #333;
+  }
+  .box_but_list span{
+    padding-right: 24px;
+  }
+  .box_but_list .triangle-down{
+    background-image: url("../../assets/images/triangle-down.png");
+    background-size: 10px 6px;
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+  .box_but_list .current{
+    color: #44a7d1;
+    background-image: url("../../assets/images/triangle-up.png");
+    background-size: 10px 6px;
+    background-repeat: no-repeat;
+    background-position: right;
   }
   .box_but_list .brand_but .shu{
     width: 1px;
@@ -159,5 +185,24 @@ export default {
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
+  }
+  /*下拉弹窗*/
+  .brand_popup{
+    width: 100%;
+    min-height: 300px;
+    background-color: #FFF;
+    position: absolute;
+    top: 108px;
+    left: 0;
+    z-index: 2;
+  }
+  .mask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    left: 0;
+    top: 108px;
+    z-index: 1;
   }
 </style>
