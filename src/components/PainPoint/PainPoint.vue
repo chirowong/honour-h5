@@ -1,12 +1,16 @@
 <template>
   <Header title="常规痛点">
-    <dev class="box_but_list">
-      <div class="brand_but" @click="brandBut"><span class="triangle-down" :class="{'current':brandPopup}">品牌</span><div class="shu"></div></div>
-      <div class="cycle_but"><span class="triangle-down">周期</span></div>
-    </dev>
+    <div class="box_but_list">
+      <div class="brand_but" @click="brandBut">
+        <span class="triangle-down" :class="{'current':brandPopup}">品牌</span>
+        <div class="shu"></div>
+      </div>
+      <div class="cycle_but" @click="cycleBut">
+        <span class="triangle-down" :class="{'current':cyclePopup}">周期</span>
+      </div>
+    </div>
     <div class="box_label_list">
-      <span>全部品牌</span>
-      <span>近四周</span>
+      <span v-for="item in labelArr" :key="item.id">{{item}}</span>
     </div>
     <div class="content_list">
       <div class="cont">
@@ -32,9 +36,20 @@
         </div>
       </div>
     </div>
-    <div class="mask" v-if="mask"></div>
+    <div class="overlay" v-if="overlay"></div>
     <div class="brand_popup" v-if="brandPopup">
-      11
+      <ul>
+        <li v-for="item in brandArr" :key="item.id" @click="selectSort(item)" :class="{'current':item.show===true}">
+          {{item.name}}
+        </li>
+      </ul>
+      <div class="button_box">
+        <div class="button ResetButton" @click="ResetButton">重置</div>
+        <div class="button ConfirmButton" @click="ConfirmButton">确定</div>
+      </div>
+    </div>
+    <div  class="cycle_popup" v-if="cyclePopup" style="height: 200px;">
+      22222
     </div>
   </Header>
 </template>
@@ -57,15 +72,59 @@ export default {
       maxPledge: 0,
       trend_plus_minus: 0,
       brandPopup: false,
-      mask: false,
+      overlay: false,
+      select: '',
+      brandArr: [
+        { name: '全部品牌', show: false },
+        { name: 'AO史密斯', show: false },
+        { name: '能率', show: false },
+        { name: '林内', show: false }
+      ],
+      labelArr: [],
+      cyclePopup: false
     }
   },
   created: function () {
   },
   methods: {
-    brandBut: function () {
+    brandBut () {
+      this.cyclePopup = false
       this.brandPopup = !this.brandPopup
-      this.mask = !this.mask
+      if (this.brandPopup === true) {
+        this.overlay = true
+      } else {
+        this.overlay = false
+      }
+    },
+    selectSort (item) {
+      item.show = !item.show
+    },
+    ConfirmButton () {
+      this.brandPopup = !this.brandPopup
+      this.overlay = !this.overlay
+      let Arr = this.brandArr
+      let labelArr = []
+      for (let i in Arr) {
+        if (Arr[i].show === true) {
+          labelArr.push(Arr[i].name)
+        }
+      }
+      this.labelArr = labelArr
+    },
+    ResetButton () {
+      let Arr = this.brandArr
+      for (let i in Arr) {
+        Arr[i].show = false
+      }
+    },
+    cycleBut () {
+      this.brandPopup = false
+      this.cyclePopup = !this.cyclePopup
+      if (this.cyclePopup === true) {
+        this.overlay = true
+      } else {
+        this.overlay = false
+      }
     }
   }
 }
@@ -79,6 +138,7 @@ export default {
     height: 48px;
     line-height: 48px;
     border-bottom: 1px #f1f1f1 solid;
+    font-size: 14px;
   }
   .box_but_list .brand_but,.cycle_but{
     position: relative;
@@ -87,6 +147,14 @@ export default {
     width: 50%;
     height: 48px;
     color: #333;
+  }
+  .box_but_list .brand_but .shu{
+    width: 1px;
+    height: 25px;
+    background-color: #f1f1f1;
+    position: absolute;
+    right: 0;
+    top: 11px;
   }
   .box_but_list span{
     padding-right: 24px;
@@ -103,14 +171,6 @@ export default {
     background-size: 10px 6px;
     background-repeat: no-repeat;
     background-position: right;
-  }
-  .box_but_list .brand_but .shu{
-    width: 1px;
-    height: 25px;
-    background-color: #f1f1f1;
-    position: absolute;
-    right: 0;
-    top: 11px;
   }
   /*已经选择的标签样式*/
   .box_label_list{
@@ -189,14 +249,51 @@ export default {
   /*下拉弹窗*/
   .brand_popup{
     width: 100%;
-    min-height: 300px;
     background-color: #FFF;
     position: absolute;
     top: 108px;
     left: 0;
     z-index: 2;
   }
-  .mask{
+  .brand_popup ul{
+    padding: 0 38px;
+    text-align: left;
+    font-size: 14px;
+    color: #666;
+  }
+  .brand_popup ul li{
+    height: 48px;
+    line-height: 48px;
+    border-bottom: #f8f8f8 solid 1px;
+    background-image: url("../../assets/images/select_icon.png");
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position: right;
+  }
+  .brand_popup ul li.current{
+    background-image: url("../../assets/images/select_icon1.png");
+  }
+  .brand_popup ul li:last-child{
+    border-bottom: none;
+  }
+  .brand_popup .button_box{
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+  }
+  .brand_popup .button_box .button{
+    width: 50%;
+    height: 56px;
+    float: left;
+    background-color: #efefef;
+    color: #b9b9b9;
+    font-size: 18px;
+  }
+  .brand_popup .button_box .ConfirmButton{
+    background-color: #44a7d1;
+    color: #fff;
+  }
+  .overlay{
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
@@ -204,5 +301,13 @@ export default {
     left: 0;
     top: 108px;
     z-index: 1;
+  }
+  .cycle_popup{
+    width: 100%;
+    background-color: #FFF;
+    position: absolute;
+    top: 108px;
+    left: 0;
+    z-index: 2;
   }
 </style>
