@@ -11,6 +11,7 @@ import Query from '@/components/Query'
 import PainPoint from '@/components/PainPoint'
 import {HighValue, Trend} from '@/components/HighValue'
 import Search from '@/components/Search'
+import PainPointDetails from '@/components/PainPointDetails'
 Vue.use(Router)
 
 const router = new Router({
@@ -29,6 +30,11 @@ const router = new Router({
       path: '/painPoint',
       name: 'PainPoint',
       component: PainPoint
+    },
+    {
+      path: '/painPointDetails',
+      name: 'PainPointDetails',
+      component: PainPointDetails
     },
     {
       path: '/highValue',

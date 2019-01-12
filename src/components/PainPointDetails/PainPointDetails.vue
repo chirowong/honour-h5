@@ -1,5 +1,5 @@
 <template>
-  <Header title="常规痛点">
+  <Header title="痛点详情">
     <div class="box_but_list">
       <div class="brand_but" @click="brandBut">
         <span class="triangle-down" :class="{'current':brandPopup}">品牌</span>
@@ -13,35 +13,18 @@
       <span v-for="item in brandCurrent" :key="item.id">{{item}}</span>
       <span v-if="cycleCurrent !== ''">{{cycleCurrent}}</span>
     </div>
-    <div class="content_list">
-      <div class="cont">
-        <div class="top">
-          <div class="name">声音异响</div>
-          <!-- <div class="num_but">共1000条 ></div> -->
-          <router-link class="num_but" to="PainPointDetails">共1000条 ></router-link>
-        </div>
-        <div class="bottom">
-          <div class="name">全部品牌</div>
-          <div class="ProgressBar"><div class="blue" style="width: 50%"></div></div>
-          <div class="Number">1000</div>
-        </div>
-      </div>
-      <div class="cont">
-        <div class="top">
-          <div class="name">声音异响</div>
-          <div class="num_but">共1000条 ></div>
-        </div>
-        <div class="bottom">
-          <div class="name">全部品牌</div>
-          <div class="ProgressBar"><div class="blue" style="width: 50%"></div></div>
-          <div class="Number">1000</div>
-        </div>
-        <div class="bottom">
-          <div class="name">全部品牌</div>
-          <div class="ProgressBar"><div class="blue" style="width: 50%"></div></div>
-          <div class="Number">1000</div>
-        </div>
-      </div>
+    <div class="titleBox">声音异响
+      <div class="Number">共发布1000条评论</div>
+    </div>
+    <div class="hign-value-contain">
+      <ContentCard
+        title="美的:JSQ25-G3"
+        period="周期Y18W04"
+        commentDate="2018.05.06"
+        resource="信息来源:https://item.jd.com/5115631.html"
+        content="价格匹配质量这个价格与这个质量匹配，<span style='color:#EF8237'>用着还行。噪音比较大，因为用料不足，料薄，</span>因此热交换器（燃烧室）燃烧时共振声也就比较大。所"
+        link="全文"
+      ></ContentCard>
     </div>
     <div class="overlay" v-if="overlay"></div>
     <div class="brand_popup" v-if="brandPopup">
@@ -154,6 +137,21 @@ export default {
 </script>
 
 <style>
+  .titleBox{
+    padding:0 20px;
+    font-size: 26px;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+  }
+  .titleBox .Number{
+    font-size: 14px;
+    color: #999;
+    margin-top: 12px;
+  }
+  .hign-value-contain {
+    padding:0 20px;
+  }
   /*下拉框样式*/
   .box_but_list{
     display: block;
@@ -207,69 +205,6 @@ export default {
     color: #999;
     margin-right: 12px;
     border-radius: 4px;
-  }
-  /*内容*/
-  .content_list{
-    text-align: left;
-    padding: 0 25px;
-    min-height: 300px;
-  }
-  .content_list .cont{
-    border-radius: 10px;
-    padding: 0 10px;
-    -moz-box-shadow:0px 1px 5px #e0e0e0;
-    -webkit-box-shadow:0px 1px 5px #e0e0e0; box-shadow:0px 1px 5px #e0e0e0;
-    margin-bottom: 22px;
-    padding-bottom: 5px;
-  }
-  .content_list .cont .top{
-    height: 54px;
-    line-height: 54px;
-    border-bottom: 1px #f1f1f1 solid;
-    margin-bottom: 5px;
-  }
-  .content_list .cont .top .name{
-    float: left;
-    font-size: 20px;
-    color: #333;
-    font-weight: bold;
-  }
-  .content_list .cont .top .num_but{
-    float: right;
-    font-size: 14px;
-    color: #666;
-  }
-  .content_list .cont .bottom{
-    height: 26px;
-    line-height: 26px;
-  }
-  .content_list .cont .bottom .name{
-    float: left;
-    color: #999;
-    width: 22%;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap;
-  }
-  .content_list .cont .bottom .ProgressBar{
-    float: left;
-    background-color: #efefef;
-    width: 64%;
-    height: 6px;
-    margin-top: 10px;
-  }
-  .content_list .cont .bottom .ProgressBar .blue{
-    height: 6px;
-    background-color: #44a7d1;
-  }
-  .content_list .cont .bottom .Number{
-    float: right;
-    text-align: right;
-    color: #999;
-    width: 14%;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap;
   }
   /*下拉弹窗*/
   .brand_popup{
